@@ -1,0 +1,150 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Polls API is a simple API allowing consumers to view polls and vote in them.",
+    "version" : "1.0",
+    "title" : "jinalk1 ",
+    "license" : {
+      "name" : "MIT",
+      "url" : "https://github.com/apiaryio/polls-api/blob/master/LICENSE"
+    }
+  },
+  "host" : "polls.apiblueprint.org",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/questions" : {
+      "get" : {
+        "summary" : "List All Questions",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "examples" : {
+              "application/json" : [ {
+                "question" : "Favourite programming language?",
+                "published_at" : "2015-08-05T08:40:51.620Z",
+                "choices" : [ {
+                  "choice" : "Swift",
+                  "votes" : 2048
+                }, {
+                  "choice" : "Python",
+                  "votes" : 1024
+                }, {
+                  "choice" : "Objective-C",
+                  "votes" : 512
+                }, {
+                  "choice" : "Ruby",
+                  "votes" : 256
+                } ]
+              } ]
+            },
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Question"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a New Question",
+        "description" : "You may create your own question using this action. It takes a JSON object containing a question and a collection of answers in the form of choices.",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/QuestionRequest"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "",
+            "examples" : {
+              "application/json" : {
+                "question" : "Favourite programming language?",
+                "published_at" : "2015-08-05T08:40:51.620Z",
+                "choices" : [ {
+                  "choice" : "Swift",
+                  "votes" : 0
+                }, {
+                  "choice" : "Python",
+                  "votes" : 0
+                }, {
+                  "choice" : "Objective-C",
+                  "votes" : 0
+                }, {
+                  "choice" : "Ruby",
+                  "votes" : 0
+                } ]
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/Question"
+            }
+          }
+        }
+      },
+      "x-summary" : "Questions Collection"
+    }
+  },
+  "definitions" : {
+    "Question" : {
+      "type" : "object",
+      "required" : [ "choices", "published_at", "question" ],
+      "properties" : {
+        "question" : {
+          "type" : "string"
+        },
+        "published_at" : {
+          "type" : "string"
+        },
+        "choices" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Choice"
+          }
+        }
+      },
+      "title" : "Question"
+    },
+    "Choice" : {
+      "type" : "object",
+      "required" : [ "choice", "votes" ],
+      "properties" : {
+        "votes" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "choice" : {
+          "type" : "string"
+        }
+      },
+      "title" : "Choice"
+    },
+    "QuestionRequest" : {
+      "type" : "object",
+      "required" : [ "choices", "question" ],
+      "properties" : {
+        "question" : {
+          "type" : "string"
+        },
+        "choices" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      },
+      "title" : "Question Request",
+      "example" : {
+        "question" : "Favourite programming language?",
+        "choices" : [ "Swift", "Python", "Objective-C", "Ruby" ]
+      }
+    }
+  }
+}
