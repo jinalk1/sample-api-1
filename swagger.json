@@ -3,7 +3,7 @@
   "info" : {
     "version" : "1.0",
     "title" : "jinalk1 ",
-    "description" : "Polls API is a simple API allowing consumers to view polls and vote in them.",
+    "description" : "Polls API edited from commandline is a simple API allowing consumers to view polls and vote in them.",
     "license" : {
       "name" : "MIT",
       "url" : "https://github.com/apiaryio/polls-api/blob/master/LICENSE"
