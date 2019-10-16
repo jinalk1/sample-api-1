@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: '1.0'
-  title: "jinalk1 "
+  title: "sample-api-1 "
   description: Polls API that is edited from command line is a simple API allowing consumers to view polls and vote in them.
   license:
     name: MIT
