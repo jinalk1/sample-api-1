@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Polls API is a simple API allowing consumers to view polls and vote in them.",
+    "description" : "Polls API that is edited from command line is a simple API allowing consumers to view polls and vote in them.",
     "version" : "1.0",
     "title" : "jinalk1 ",
     "license" : {
